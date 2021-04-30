@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 module latchsr_tb();
-    integer i;
+    integer y;
 	reg Reset, Set;
 	wire mon;
 
@@ -11,8 +11,8 @@ module latchsr_tb();
 		
 			$dumpfile("latchSR.v");
 			$dumpvars();
-            		for(i = 0; i<30000; i++)begin
-              		 #10 Set = i%2;
+			for(y = 0; y<30000; y++)begin
+              		 #10 Set = y%2;
                		 Reset = 1-Set; 
             		end
 		end
