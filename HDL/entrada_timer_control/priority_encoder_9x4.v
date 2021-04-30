@@ -1,27 +1,20 @@
 
-module timer(input wire [3:0] data, input wire loadn, input wire clrn, 
-             input wire clock, input wire en,
-             output wire [3:0] sec_ones, output wire [3:0] sec_tens,
-             output wire [3:0] mins, output reg zero);
+module prio_enco_9x4 (
+  output wire [3:0] dout,
+  input wire[9:0] din,
+  input wire en,
+  output wire Cn
+);
 
-wire sec_to_tens;
-wire tens_to_min;
-wire useless;
-wire zero1;
-wire zero2;
-wire zero3;
-
-timer_ten seconds(data, loadn, clock, clrn, en, sec_ones, sec_to_tens, zero1);
-timer_six ten_secs(sec_ones, loadn, clock, clrn, sec_to_tens, sec_tens, tens_to_min, zero2);
-timer_ten minutes(sec_tens, loadn, clock, clrn, tens_to_min, mins, useless, zero3);
-
-
-
-always@(zero1,zero2,zero3)
-    begin
-        zero = zero1 & zero2 & zero3;
-    end
-
-
-
+      assign Cn = (en | ~(din[0] | din[1] | din[2] | din[3] | din[4] | din[5] | din[6] | din[7] | din[8] | din[9]));
+      assign dout = (din[9] ==1'b1) ? 4'b1001:
+                      (din[8] ==1'b1) ? 4'b1000:
+                      (din[7] ==1'b1) ? 4'b0111:
+                      (din[6] ==1'b1) ? 4'b0110:
+                      (din[5] ==1'b1) ? 4'b0101:
+                      (din[4] ==1'b1) ? 4'b0100:
+                      (din[3] ==1'b1) ? 4'b0011:
+                      (din[2] ==1'b1) ? 4'b0010:
+                      (din[1] ==1'b1) ? 4'b0001:
+                      (din[0] ==1'b1) ? 4'b0000: 4'b0000;
 endmodule
