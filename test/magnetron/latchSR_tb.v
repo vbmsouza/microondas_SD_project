@@ -1,19 +1,19 @@
 `timescale 1ns/1ps
 module latchsr_tb();
     integer i;
-	reg R, S;
-	wire magon;
+	reg Reset, Set;
+	wire mon;
 
-	latchsr DUT(.R(R), .S(S), .mag_on(magon));
+	latchsr DUT(.Reset(Reset), .Set(Set), .m_on(mon));
 	
     initial
 		begin
 		
-			$dumpfile("latchsr_tb.vcd");
+			$dumpfile("latchSR.v");
 			$dumpvars();
             for(i = 0; i<30000; i++)begin
-               #10 S = i%2;
-                R = 1-S; 
+               #10 Set = i%2;
+                Reset = 1-Set; 
             end
 		end
 
