@@ -25,7 +25,7 @@ for (i = 0; i < 9; i++)begin
 end
 
     begin 
-    $dumpfile("decoderWave.vcd");
+    $dumpfile("decoder.v");
 	$dumpvars(0,bench_Decoder);
     
     assign decoder_out = (binary_in==10'b1111110) ? 0:
