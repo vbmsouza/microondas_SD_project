@@ -1,25 +1,20 @@
-module logicC (
-    input wire startN , stopN , clearN, door_closed, timer_done, 
-    output reg  S, R
-);
+module logicC (input wire comecaN , pareN , limpaN, portafechada, tdone, output reg  Set, Reset);
 
-    always @(startN, stopN, clearN, door_closed, timer_done) begin
-        if(!clearN || !stopN || timer_done || !door_closed)
+    always @(comecaN, pareN, limpaN, porta_fechada, t_done) begin
+        if(!limpaN || !pareN || t_done || !porta_fechada)
             begin
-                S = 0;
-                R = 1;
-                //mag_on = 0
+                Set = 0;
+                Reset = 1;
             end
-        else if(!startN && door_closed)
+        else if(!comecaN && porta_fechada)
             begin
-                S = 1;
-                R = 0;
-                //mag_on = 1 
+                Set = 1;
+                Reset = 0;
             end
         else 
             begin
-                S = 0;
-                R = 0;
+                Set = 0;
+                Reset = 0;
             end
     end
 endmodule
