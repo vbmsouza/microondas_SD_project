@@ -1,19 +1,16 @@
-module latchsr(
-    input wire S,R,
-    output reg mag_on
-);
-    always @(S or R) begin
-        if(R && !S)
+module latchsr( input wire Set, Reset, output reg m_on);
+    always @(Set or Reset) begin
+        if(Reset && !Set)
             begin
-                mag_on <= 0;
+                m_on <= 0;
             end 
-        else if(S && !R)
+        else if(Set && !Reset)
             begin
-                mag_on<= 1;
+                m_on<= 1;
             end
-        else if(!S && !R)
+        else if(!Set && !Reset)
             begin
-                mag_on <= mag_on;
+                m_on <= m_on;
             end
     end
 endmodule
