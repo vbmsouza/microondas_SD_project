@@ -1,25 +1,25 @@
 
-module timer(input wire [3:0] data, input wire loadn, input wire clrn, 
-             input wire clock, input wire en,
-             output wire [3:0] sec_ones, output wire [3:0] sec_tens,
-             output wire [3:0] mins, output reg zero);
+module integracaotimer(input wire [3:0] in, input wire Cin, input wire Cn, 
+             input wire clock, input wire z,
+                       output wire [3:0] sec_unidade, output wire [3:0] sec_decimal,
+             output wire [3:0] min, output reg zero);
 
-wire sec_to_tens;
-wire tens_to_min;
-wire useless;
-wire zero1;
-wire zero2;
-wire zero3;
+wire sec_to_decimal;
+wire decimal_to_min;
+wire S_uso;
+wire z1;
+wire z2;
+wire z3;
 
-timer_ten seconds(data, loadn, clock, clrn, en, sec_ones, sec_to_tens, zero1);
-timer_six ten_secs(sec_ones, loadn, clock, clrn, sec_to_tens, sec_tens, tens_to_min, zero2);
-timer_ten minutes(sec_tens, loadn, clock, clrn, tens_to_min, mins, useless, zero3);
+  timer_ten seconds(in, Cin, clock, Cn, z, sec_unidade, sec_to_decimal, z1);
+  timer_six ten_secs(sec_unidade, Cin, clock, Cn, sec_to_decimal, sec_decimal, decimal_to_min, z2);
+  timer_ten minutes(sec_decimal, Cin, clock, Cn, decimal_to_min, min, S_uso, z3);
 
 
 
-always@(zero1,zero2,zero3)
+  always@(z1,z2,z3)
     begin
-        zero = zero1 & zero2 & zero3;
+        zero = z1 & z2 & z3;
     end
 
 
