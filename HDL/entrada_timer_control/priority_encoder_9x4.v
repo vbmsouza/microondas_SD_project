@@ -1,5 +1,5 @@
 
-module prio_enco_9x4 (
+module priority_encoder_9x4 (
   output wire [3:0] dout,
   input wire[9:0] din,
   input wire en,
