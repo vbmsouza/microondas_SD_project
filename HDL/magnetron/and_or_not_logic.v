@@ -14,7 +14,7 @@ module logicC (input wire comecaN , pareN , limpaN, portafechada, tdone, output 
         else 
             begin
                 Set = 0;
-                Reset = 0;
+                Reset = 1;
             end
     end
 endmodule
