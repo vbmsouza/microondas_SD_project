@@ -1,6 +1,6 @@
 `timescale 1ps/1ps
 
-module tb_encoder(); 
+module integra_timer_and_control_testb(); 
 
 reg  [9:0] y; 
 wire [3:0] a;
