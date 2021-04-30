@@ -1,4 +1,4 @@
-module freq_converter(input wire clk, output reg new_clk); //divide by 100
+module freq_converter(input wire clk, output reg new_clk);
 
 reg [7:0] cont;
 
