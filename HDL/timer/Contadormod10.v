@@ -1,13 +1,9 @@
 module timer_ten(input wire [3:0] in, input wire Cin,input wire clk,input wire Cn, input wire z,
                  output reg [3:0]  out, output wire x, output reg zero );
-
-
   assign x = (z & ~out[0] & ~out[1] & ~out[2] & ~out[3]);
-
 initial begin
     out = 0;
 end
-
   always @(posedge clk,negedge Cn)
     begin
       if(~Cn)
