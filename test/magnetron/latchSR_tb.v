@@ -11,10 +11,10 @@ module latchsr_tb();
 		
 			$dumpfile("latchSR.v");
 			$dumpvars();
-            for(i = 0; i<30000; i++)begin
-               #10 Set = i%2;
-                Reset = 1-Set; 
-            end
+            		for(i = 0; i<30000; i++)begin
+              		 #10 Set = i%2;
+               		 Reset = 1-Set; 
+            		end
 		end
 
 endmodule
