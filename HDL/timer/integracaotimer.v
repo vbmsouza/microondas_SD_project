@@ -11,9 +11,9 @@ wire z1;
 wire z2;
 wire z3;
 
-  timer_ten seconds(in, Cin, clock, Cn, z, sec_unidade, sec_to_decimal, z1);
-  timer_six ten_secs(sec_unidade, Cin, clock, Cn, sec_to_decimal, sec_decimal, decimal_to_min, z2);
-  timer_ten minutes(sec_decimal, Cin, clock, Cn, decimal_to_min, min, S_uso, z3);
+  Contadormod10 second(in, Cin, clock, Cn, z, sec_unidade, sec_to_decimal, z1);
+  Contador_mod_6 tn_sec(sec_unidade, Cin, clock, Cn, sec_to_decimal, sec_decimal, decimal_to_min, z2);
+  Contadormod10 minute(sec_decimal, Cin, clock, Cn, decimal_to_min, min, S_uso, z3);
 
 
 
