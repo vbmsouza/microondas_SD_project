@@ -2,24 +2,24 @@
 
 module timer_ten_tb();
 
-reg clk=1;
-reg loadn=1;
-reg clrn=1;
-reg en=1;
+reg clk = 1;
+reg Cin = 1;
+reg Cn = 1;
+reg z = 1;
 reg [3:0] in;
 wire [3:0] out;
-wire tc;
+wire x;
 wire zero;
 
-timer_ten DUT(in,loadn,clk,clrn,en,out,tc,zero);
-parameter NUM = 8;
+ timer_ten DUT(in,Cin,clk,Cn,z,out,x,zero);
+parameter N = 8;
 
 always #5 clk = ~clk;    
 
-always @(posedge clk && loadn==1)
+ always @(posedge clk && Cin==1)
 begin
  
-    if(out == NUM+1 && loadn == 1) $finish; 
+ if(out == N+1 && Cin == 1) $finish; 
 
 end    
 
@@ -27,9 +27,9 @@ initial
     begin
         $dumpfile("timer_ten.vcd");
         $dumpvars;
-        loadn = 0;
-        in = NUM;
-        #10 loadn = 1;
+        Cin = 0;
+        in = N;
+        #10 Cin = 1;
 
     end
   
