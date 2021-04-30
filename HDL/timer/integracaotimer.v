@@ -1,3 +1,4 @@
+
 module timer(input wire [3:0] data, input wire loadn, input wire clrn, 
              input wire clock, input wire en,
              output wire [3:0] sec_ones, output wire [3:0] sec_tens,
