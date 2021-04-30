@@ -9,7 +9,7 @@ module decoder( input wire [3:0] sec_on, sec_t, min, output wire [6:0] sec_on_se
   
 endmodule
 
-module decoderUnit(
+module decoderU(
   input wire [3:0] binary_in   ,
   output wire [6:0] decoder_out ,
   input wire en_in,
@@ -27,6 +27,4 @@ module decoderUnit(
                        (binary_in==8) ? 10'b1111111:10'b1111011;
 
   assign en_out = (binary_in[0] | binary_in[1] | binary_in[2] | binary_in[3] | en_in);  
-
-  
 endmodule
