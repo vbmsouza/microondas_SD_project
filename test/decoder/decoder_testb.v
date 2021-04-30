@@ -1,10 +1,10 @@
 `timescale 1ms/1ps
-module decoder_tb();
+module decoder_testb();
 
     reg [3:0] sec, t, min;
     wire [6:0] sec_secs, t_secs, min_secs;
 
-    decoder4x7 DUT(sec, t,mins, sec_secs, t_secs, min_secs);
+    decoder DUT(sec, t,mins, sec_secs, t_secs, min_secs);
 
 initial begin
     $dumpfile("decoder.v");
