@@ -18,10 +18,8 @@ wire zero;
 always #5 clock = ~clock;
 
 initial begin
-    $dumpfile("timer.vcd");
+    $dumpfile("integracaotimer.v");
     $dumpvars;
-    //Carregar 1:99 no contador zera a contagem quando chega em 50 segundos (usando o clear) e encerra o processo
-    //Testa a funcionalidade do do contador, do load, do clear e de carregar um número entre 60-99
     Cin = 0;
     in = 1;
     #10 in = 9;
