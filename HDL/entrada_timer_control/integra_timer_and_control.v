@@ -1,17 +1,18 @@
 module controller (
-    input wire [9:0] entrada,
+    input wire [9:0] teclado,
     input wire en,
-    input wire clock,
+    input wire clk,
     output wire [3:0] out,
     output wire Cin,
     output wire pt
 );
 
-wire z1; 
-wire z2;
-    priority_encoder encoder(.d_out(out), .d_in(entrada), .en(en), .Cin(Cin));
-    counter_delay delay(clock, Cin,w1);
-freq_converter converter(clock,w2);
-    mux2x1 mux(en,z1,z2,pt);
+    wire x1; 
+    wire x2; 
+
+    priority_encoder_9x4 encoder(.d_out(out), .d_in(teclado), .en(en), .Cin(Cin));
+    cont_delay delay(clk, Cin,x1);
+    freq100 converter(clk,x2);
+    mux2_1 mux(en,x1,x2,pt);
 
 endmodule
